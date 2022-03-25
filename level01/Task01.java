@@ -1,6 +1,8 @@
 package level01;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Task01 {
 	
@@ -11,7 +13,7 @@ public class Task01 {
 //		System.out.println(method.solution("23four5six7"));
 //		System.out.println(method.solution("2three45sixseven"));
 //		System.out.println(method.solution("123"));
-		System.out.println(method.solution("zeroonetwothreefourfivesixseveneightninenine"));
+		System.out.println(method.solution("zerofourfivesix1seveneightnineninezero"));
 		
 	}
 	
@@ -22,33 +24,37 @@ class Method{
 		
 		String s_tmp = s.toLowerCase();
 		
-		HashMap<String, Integer> chCode = new HashMap<String, Integer>();
 		
-		chCode.put("zero", 0);
-		chCode.put("one", 1);
-		chCode.put("two", 2);
-		chCode.put("three", 3);
-		chCode.put("four", 4);
-		chCode.put("five", 5);
-		chCode.put("six", 6);
-		chCode.put("seven", 7);
-		chCode.put("eight", 8);
-		chCode.put("nine", 9);
+		List<String> chCode = new ArrayList<String>();
+		
+		chCode.add("zero");
+		chCode.add("one");
+		chCode.add("two");
+		chCode.add("three");
+		chCode.add("four");
+		chCode.add("five");
+		chCode.add("six");
+		chCode.add("seven");
+		chCode.add("eight");
+		chCode.add("nine");
 		
 		HashMap<Character, String> numIndex = setIndex(chCode);
 		
 		int i = 0;
 		
-		while(i < s.length()) {
-			if(!isNum(s.charAt(i))) {
-				String[] str = numIndex.get(s.charAt(i)).split(",");
+		while(i < s.length() - 1) {
+			if(!isNum(s.charAt(i)) && numIndex.containsKey(s.charAt(i))) {
+				String[] str = numIndex.remove(s.charAt(i)).split(",");
 				
 				for(String tmpKey : str) {
 					if(s_tmp.contains(tmpKey)) {
-						s_tmp = s_tmp.replaceFirst(tmpKey, chCode.get(tmpKey).toString());
-						i += tmpKey.length();
+						s_tmp = s_tmp.replaceAll(tmpKey, String.valueOf(chCode.indexOf(tmpKey)));
+						if(s.charAt(i) - '0' == chCode.indexOf(tmpKey))
+							i += tmpKey.length();
 					}
 				}
+                if(numIndex.isEmpty())
+					break;
 			} else {
 				i++;
 			}
@@ -58,16 +64,16 @@ class Method{
 		return answer;
 	}
 	
-	HashMap<Character, String> setIndex(HashMap<String, Integer> chCode){
+	HashMap<Character, String> setIndex(List<String> chCode){
 		
 		HashMap<Character, String> numIndex = new HashMap<Character, String>();
 		
-		for(String key : chCode.keySet()) {
+		for(String key : chCode) {
 			String tmpKey = numIndex.get(key.charAt(0)); 
 			if(tmpKey == null){
-				numIndex.put(key.charAt(0), key + ",");
+				numIndex.put(key.charAt(0), key);
 			} else {
-				numIndex.put(key.charAt(0), tmpKey + key);
+				numIndex.put(key.charAt(0), tmpKey+ "," + key);
 			}
 		}
 		
@@ -75,6 +81,6 @@ class Method{
 	}
 	
 	boolean isNum(char a) {
-		return (a-'0' >= 0 && a-'0' < 10) ? true : false;
+		return (a >= '0' && a <= '9') ? true : false;
 	}
 }
