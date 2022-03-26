@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/*
+ * 프로그래머스 level 01 숫자 문자열과 영단어
+ * 2021 카카오 채용연계형 인턴십
+ */
 public class Task01 {
 	
 	public static void main(String[] args) {
