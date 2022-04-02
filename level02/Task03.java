@@ -2,12 +2,10 @@ package level02;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /*
- * ÇÁ·Î±×·¡¸Ó½º level 02 ¿ÀÇÂÃ¤ÆÃ¹æ
+ * í”„ë¡œê·¸ë˜ë¨¸ìŠ¤ level 02 ì˜¤í”ˆì±„íŒ…ë°©
  * 2019 KAKAO BLIND RECRUITMENT
  * 
  */
@@ -39,13 +37,13 @@ class Solution03 {
 	    	switch (message[0]) {
 				case "Enter":
 					id[list.size()] = message[1];
-					list.add("´ÔÀÌ µé¾î¿Ô½À´Ï´Ù.");
+					list.add("ë‹˜ì´ ë“¤ì–´ì™”ìŠµë‹ˆë‹¤.");
 				case "Change":
 					idMap.put(message[1].trim(), message[2].trim());
 					break;
 				case "Leave":
 					id[list.size()] = message[1];
-					list.add("´ÔÀÌ ³ª°¬½À´Ï´Ù.");
+					list.add("ë‹˜ì´ ë‚˜ê°”ìŠµë‹ˆë‹¤.");
 					break;
 	    	}
     	}

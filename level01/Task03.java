@@ -3,7 +3,7 @@ package level01;
 import java.util.*;
 
 /*
- * ÇÁ·Î±×·¡¸Ó½º level 01 ½Å°í °á°ú ¹Þ±â
+ * í”„ë¡œê·¸ëž˜ë¨¸ìŠ¤ level 01 ì‹ ê³  ê²°ê³¼ ë°›ê¸°
  * 2022 KAKAO BLIND RECRUITMENT
  */
 public class Task03 {

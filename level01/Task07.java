@@ -4,8 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /*
- * ÇÁ·Î±×·¡¸Ó½º level 01 ¾ø´Â ¼ıÀÚ ´õÇÏ±â
- * ¿ù°£ ÄÚµå Ã§¸°Áö ½ÃÁğ3
+ * í”„ë¡œê·¸ë˜ë¨¸ìŠ¤ level 01 ì—†ëŠ” ìˆ«ì ë”í•˜ê¸°
+ * ì›”ê°„ ì½”ë“œ ì±Œë¦°ì§€ ì‹œì¦Œ3
  */
 public class Task07 {
 	

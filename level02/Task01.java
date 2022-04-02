@@ -5,8 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /*
- * ÇÁ·Î±×·¡¸Ó½º level 02 ´ÜÃ¼»çÁø Âï±â
- * 2017 Ä«Ä«¿ÀÄÚµå º»¼±
+ * í”„ë¡œê·¸ë˜ë¨¸ìŠ¤ level 02 ë‹¨ì²´ì‚¬ì§„ ì°ê¸°
+ * 2017 ì¹´ì¹´ì˜¤ì½”ë“œ ë³¸ì„ 
  * 
  */
 public class Task01 {
@@ -24,17 +24,17 @@ public class Task01 {
 class Solution01 {
 	public int solution(int n, String[] data) {
         
-        // ÃÖÃÊ °ª ¼ÂÆÃ
+        // ìµœì´ˆ ê°’ ì…‹íŒ…
         PictureCase pictureCase = new PictureCase();
         Calc calc = new Calc();
         
-        // Á¶°Ç¿¡ µû¸¥ °æ¿ìÀÇ ¼ö »ı¼º
+        // ì¡°ê±´ì— ë”°ë¥¸ ê²½ìš°ì˜ ìˆ˜ ìƒì„±
         for(String dataUni : data) {
-//        	System.out.println(dataUni + " ¿äÃ»! ");
+//        	System.out.println(dataUni + " ìš”ì²­! ");
         	pictureCase.addCase(dataUni, false);
         }
         
-        // ÃÖÁ¾ °æ¿ìÀÇ ¼ö * ³ª¸ÓÁö ¿ä¼Ò ¹è¿­
+        // ìµœì¢… ê²½ìš°ì˜ ìˆ˜ * ë‚˜ë¨¸ì§€ ìš”ì†Œ ë°°ì—´
         return pictureCase.cntCases() * calc.factorial(8-pictureCase.cntConditionElements());
         
     }
@@ -50,17 +50,17 @@ class PictureCase {
 		this.cases = new HashSet<String>(); 
 		this.conditionElements = new HashSet<Character>();
 		
-		// {A, C, F, J, M, N, R, T} 8¸í ÃÊ±âÈ­
+		// {A, C, F, J, M, N, R, T} 8ëª… ì´ˆê¸°í™”
 		this.cases.add("00000000");
 	}
 	
-	// Á¶°Ç Ãß°¡¿¡ µû¸¥ Case ÀúÀå
+	// ì¡°ê±´ ì¶”ê°€ì— ë”°ë¥¸ Case ì €ì¥
 	public HashSet<String> addCase(String inputCase, boolean subFlag) {
-//		System.out.println("====================== ¿äÃ» ½ÃÀÛ ==================");
+//		System.out.println("====================== ìš”ì²­ ì‹œì‘ ==================");
 		HashSet<String> tmp = new HashSet<String>();
 		Matcher matcher;
 		
-		// Á¶°ÇÀ» Á¤±ÔÇ¥Çö½ÄÀ¸·Î º¯°æ
+		// ì¡°ê±´ì„ ì •ê·œí‘œí˜„ì‹ìœ¼ë¡œ ë³€ê²½
 		/*
 		 * [0](\\w{3})[a]
 		 */
@@ -68,21 +68,21 @@ class PictureCase {
 		Character[] regArr = new Character[] {'0', '0'};
 		int partNum = Integer.parseInt(inputCase.substring(4));
 		
-//		System.out.println("caseArr ÃÊ±â°ª : "+Arrays.toString(caseArr));
-//		System.out.println("regArr ÃÊ±â°ª : "+Arrays.toString(regArr));
+//		System.out.println("caseArr ì´ˆê¸°ê°’ : "+Arrays.toString(caseArr));
+//		System.out.println("regArr ì´ˆê¸°ê°’ : "+Arrays.toString(regArr));
 		
-		// ºÎµîÈ£¿¡¼­ Áßº¹ ÅÂ¿ï ¶§ °ªÀÌ ÀÌ»óÇØÁü.
+		// ë¶€ë“±í˜¸ì—ì„œ ì¤‘ë³µ íƒœìš¸ ë•Œ ê°’ì´ ì´ìƒí•´ì§.
 		
 		
-//		System.out.println("Á¶°Ç°ª Set : " + conditionElements.toString());
+//		System.out.println("ì¡°ê±´ê°’ Set : " + conditionElements.toString());
 //		
-//		System.out.println("caseArr º¯°æ ÈÄ : "+Arrays.toString(caseArr));
-//		System.out.println("regArr º¯°æ ÈÄ : "+Arrays.toString(regArr));
+//		System.out.println("caseArr ë³€ê²½ í›„ : "+Arrays.toString(caseArr));
+//		System.out.println("regArr ë³€ê²½ í›„ : "+Arrays.toString(regArr));
 		
 		switch (inputCase.charAt(3)) {
 			case '=':
-//				System.out.println("= ÁøÀÔ!");
-				// 0, 2 ÀÎµ¦½º Á¶°Ç¿¡ ÀÖ´Â ±¸ºĞÀÚ¸¦ °¡Á®¿Í ±âÁ¸ Á¶°Ç ºÎ¿©¿©ºÎ È®ÀÎ
+//				System.out.println("= ì§„ì…!");
+				// 0, 2 ì¸ë±ìŠ¤ ì¡°ê±´ì— ìˆëŠ” êµ¬ë¶„ìë¥¼ ê°€ì ¸ì™€ ê¸°ì¡´ ì¡°ê±´ ë¶€ì—¬ì—¬ë¶€ í™•ì¸
 				for(int idx = 0; idx < 2; idx++) {
 					if(this.conditionElements.contains(caseArr[idx])) {
 						regArr[idx] = caseArr[idx];
@@ -106,25 +106,25 @@ class PictureCase {
 				if(subFlag) return tmp;
 				break;
 			case '>':
-//				System.out.println("> ÁøÀÔ!");
+//				System.out.println("> ì§„ì…!");
 				for(int i = partNum+1; i <= 6; i++) {
 					tmp.addAll(addCase(inputCase.replace(">"+partNum, "="+i), true));
 				}
 				break;
 			case '<':
-//				System.out.println("< ÁøÀÔ!");
+//				System.out.println("< ì§„ì…!");
 				for(int i = partNum-1; i >= 0; i--) {
 					tmp.addAll(addCase(inputCase.replace("<"+partNum, "="+i), true));
 				}
 				break;
 		}
 		
-		// ÈÄÃ³¸®
+		// í›„ì²˜ë¦¬
 		this.conditionElements.add(caseArr[0]);
 		this.conditionElements.add(caseArr[1]);
 		this.cases = tmp;
 		
-//		System.out.println("ÃÖÁ¾°á°ú : " + cases.toString());
+//		System.out.println("ìµœì¢…ê²°ê³¼ : " + cases.toString());
 		return this.cases;
 	}
 	

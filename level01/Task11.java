@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /*
- * ÇÁ·Î±×·¡¸Ó½º level 01 ¼Ò¼ö ¸¸µé±â
+ * í”„ë¡œê·¸ë˜ë¨¸ìŠ¤ level 01 ì†Œìˆ˜ ë§Œë“¤ê¸°
  * Summer/Winter Coding(~2018)
  */
 public class Task11 {
@@ -23,10 +23,10 @@ class Solution11 {
     	int answer = 0;
     	PrimeNumber pn = new PrimeNumber();
 		
-        // ¹è¿­ Á¤·Ä
+        // ë°°ì—´ ì •ë ¬
         Arrays.sort(nums);
         
-        // ¼Ò¼ö ¸¸µé±â
+        // ì†Œìˆ˜ ë§Œë“¤ê¸°
         pn.setPrimeNumberList(nums[0]+nums[1]+nums[2], nums[nums.length-3]+nums[nums.length-2]+nums[nums.length-1]);
         
         for(int i=0; i<nums.length-2; i++) {
@@ -46,7 +46,7 @@ class PrimeNumber{
 	
 	private ArrayList<Integer> primeList = new ArrayList<Integer>();
 	
-	// ¹üÀ§¿¡ µû¸¥ primNumber »ı¼º
+	// ë²”ìœ„ì— ë”°ë¥¸ primNumber ìƒì„±
 	public void setPrimeNumberList(int from, int to) {
 		boolean flag = true;
 		
@@ -62,7 +62,7 @@ class PrimeNumber{
 		}
 	}
 	
-	// ¼Ò¼ö ¸®½ºÆ® return
+	// ì†Œìˆ˜ ë¦¬ìŠ¤íŠ¸ return
 	public ArrayList<Integer> getPrimeList(){
 		return this.primeList;
 	}

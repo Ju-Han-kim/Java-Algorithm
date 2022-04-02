@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Stack;
 
 /*
- * ÇÁ·Î±×·¡¸Ó½º level 01 Å©·¹ÀÎ ÀÎÇü»Ì±â °ÔÀÓ
- * 2019 Ä«Ä«¿À °³¹ßÀÚ °Ü¿ï ÀÎÅÏ½Ê
+ * í”„ë¡œê·¸ë˜ë¨¸ìŠ¤ level 01 í¬ë ˆì¸ ì¸í˜•ë½‘ê¸° ê²Œì„
+ * 2019 ì¹´ì¹´ì˜¤ ê°œë°œì ê²¨ìš¸ ì¸í„´ì‹­
  */
 public class Task06 {
 
@@ -23,7 +23,7 @@ class Solution06 {
 	public int solution(int[][] board, int[] moves) {
         int answer = 0;
         
-        // ¹Ù±¸´Ï Stack
+        // ë°”êµ¬ë‹ˆ Stack
         Basket basket = new Basket();
         
         HashMap<Integer, Stack<Integer>> crain = new HashMap<Integer, Stack<Integer>>();
@@ -42,7 +42,7 @@ class Solution06 {
         	crain.put(size + 1, part);
         }
         
-        // ½ÇÇà
+        // ì‹¤í–‰
         for(int move : moves) 
         	if(!crain.get(move).isEmpty())	basket.pushElement(crain.get(move).pop());
         
