@@ -72,29 +72,28 @@ class Box {
 		int tmp = box[x1][y1];
 		int min = box[x1][y1];
 		
-//		for(int x = x1; x < x2; x++) {
-//			box[x][y1] = box[x + 1][y1];
-//			min = Math.min(min, box[x][y1]);
-//		}
-//		
-//		for(int y = y1; y < y2; y++) {
-//			box[x2][y] = box[x2][y + 1];
-//			min = Math.min(min, box[x2][y]);
-//		}
-//		
-//		for(int x = x2; x > x1; x--) {
-//			box[x][y2] = box[x - 1][y2];
-//			min = Math.min(min, box[x][y2]);
-//		}
-//		
-//		for(int y = y2; y > y1; y--) {
-//			box[x1][y] = box[x1][y - 1];
-//			min = Math.min(min, box[x1][y]);
-//		}
+		for(int x = x1; x < x2; x++) {
+			box[x][y1] = box[x + 1][y1];
+			min = Math.min(min, box[x][y1]);
+		}
+		
+		for(int y = y1; y < y2; y++) {
+			box[x2][y] = box[x2][y + 1];
+			min = Math.min(min, box[x2][y]);
+		}
+		
+		for(int x = x2; x > x1; x--) {
+			box[x][y2] = box[x - 1][y2];
+			min = Math.min(min, box[x][y2]);
+		}
+		
+		for(int y = y2; y > y1; y--) {
+			box[x1][y] = box[x1][y - 1];
+			min = Math.min(min, box[x1][y]);
+		}
 		
 		box[x1][y1 + 1] = tmp;
 		
 		return min;
 	}
-	
 }
