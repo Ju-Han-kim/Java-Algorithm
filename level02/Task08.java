@@ -21,9 +21,9 @@ public class Task08 {
 
 class Solution08 {
 	
-	// 상하좌우 이동 초기셋팅
-	int[] rowCon = new int[] {-1, 1, 0, 0};
-	int[] colCon = new int[] {0, 0, -1, 1};
+	// 효율성을 위해 하 우 상 좌 순서로 순회
+	int[] rowCon = new int[] {1, 0, -1, 0};
+	int[] colCon = new int[] {0, 1, 0, -1};
 	int[] init;
 	int minPath;
 	
@@ -31,25 +31,28 @@ class Solution08 {
     	init = new int[] {maps.length, maps[0].length};
     	minPath = 10001;
     	
-    	process(1, 0, 0, maps);
+    	process(1, 0, 0, intToBoolean(maps));
     	
         return minPath == 10001? -1 : minPath;
     }
     
-    public void process(int nowPath, int nowRow, int nowCol, int[][] maps) {
+    public void process(int nowPath, int nowRow, int nowCol, boolean[][] maps) {
     	
     	if(nowRow == init[0] - 1 && nowCol == init[1] - 1) {
     		minPath = Math.min(minPath, nowPath);
     		return;
     	}
     	
-    	maps[nowRow][nowCol] = 0;
-    	// 상하좌우 검증
+    	maps[nowRow][nowCol] = false;
+        	
+    	// 사방위 검증
     	for(int i = 0; i < 4; i++) {
     		if(nowRow + rowCon[i] < 0 || nowCol + colCon[i] < 0 || nowRow + rowCon[i] >= init[0] || nowCol + colCon[i] >= init[1]) continue;
     		
-    		if(maps[nowRow + rowCon[i]][nowCol + colCon[i]] == 1) {
-				int[][] mapCopy = new int[init[0]][init[1]];
+    		if(maps[nowRow + rowCon[i]][nowCol + colCon[i]]) {
+    			if(nowPath + 1 == minPath) break;
+    			
+				boolean[][] mapCopy = new boolean[init[0]][init[1]];
 				
 				for(int row=0;row<init[0];row++) {
 					for(int col=0;col<init[1];col++) {
@@ -60,5 +63,17 @@ class Solution08 {
 				process(nowPath + 1, nowRow + rowCon[i], nowCol + colCon[i], mapCopy);
     		}
     	}
+    }
+    
+    public boolean[][] intToBoolean(int[][] maps){
+    	boolean[][] boolMap = new boolean[maps.length][maps[0].length]; 
+    	
+    	for(int row=0;row<maps.length;row++) {
+			for(int col=0;col<maps[0].length;col++) {
+				boolMap[row][col] = maps[row][col] == 0 ? false : true;
+			}
+		}
+    	
+    	return boolMap;
     }
 }
