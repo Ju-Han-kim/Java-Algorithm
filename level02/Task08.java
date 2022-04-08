@@ -25,17 +25,23 @@ class Solution08 {
 	int[] rowCon = new int[] {-1, 1, 0, 0};
 	int[] colCon = new int[] {0, 0, -1, 1};
 	int[] init;
+	int minPath;
 	
     public int solution(int[][] maps) {
     	init = new int[] {maps.length, maps[0].length};
-        
-        return getMinPath(0, 0, maps);
+    	minPath = 10001;
+    	
+    	process(1, 0, 0, maps);
+    	
+        return minPath == 10001? -1 : minPath;
     }
     
-    public int getMinPath(int nowRow, int nowCol, int[][] maps) {
+    public void process(int nowPath, int nowRow, int nowCol, int[][] maps) {
     	
-    	int minPath = 10000;
-    	int pathCase = 0;
+    	if(nowRow == init[0] - 1 && nowCol == init[1] - 1) {
+    		minPath = Math.min(minPath, nowPath);
+    		return;
+    	}
     	
     	maps[nowRow][nowCol] = 0;
     	// 상하좌우 검증
@@ -43,40 +49,16 @@ class Solution08 {
     		if(nowRow + rowCon[i] < 0 || nowCol + colCon[i] < 0 || nowRow + rowCon[i] >= init[0] || nowCol + colCon[i] >= init[1]) continue;
     		
     		if(maps[nowRow + rowCon[i]][nowCol + colCon[i]] == 1) {
-    			int[][] mapCopy = new int[init[0]][init[1]];
-    			
-    			for(int row=0;row<init[0];row++) {
-    				for(int col=0;col<init[1];col++) {
-    					mapCopy[row][col] = maps[row][col];
-    				}
-    			}
-    			
-    			int tmpMinPath = getMinPath(nowRow + rowCon[i], nowCol + colCon[i], mapCopy);
-    			minPath = tmpMinPath == 10001 ? 10001 : Math.min(minPath, 1 + tmpMinPath);
-    			pathCase++;
+				int[][] mapCopy = new int[init[0]][init[1]];
+				
+				for(int row=0;row<init[0];row++) {
+					for(int col=0;col<init[1];col++) {
+						mapCopy[row][col] = maps[row][col];
+					}
+				}
+				
+				process(nowPath + 1, nowRow + rowCon[i], nowCol + colCon[i], mapCopy);
     		}
     	}
-    	
-    	if(nowRow == init[0] - 1 && nowCol == init[1] - 1) return 1;
-    	else if(pathCase == 0) return 10000;
-    	else if(minPath == 10001) return -1;
-    	else return minPath;
     }
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
